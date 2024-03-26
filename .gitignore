@@ -1,3 +1,9 @@
+
+catkin_aa/build/
+catkin_aa/devel/
+catkin_aa/logs/
+.catkin_tools/
+
 # agile_autonomy/dependencies.yaml
 assimp_catkin/
 catkin_boost_python_buildtool/
