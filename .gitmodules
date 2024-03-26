@@ -1,0 +1,3 @@
+[submodule "catkin_aa/src/agile_autonomy"]
+	path = catkin_aa/src/agile_autonomy
+	url = git@github.com:jonlee48/agile_autonomy.git

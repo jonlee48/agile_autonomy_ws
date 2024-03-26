@@ -1,0 +1,21 @@
+# agile_autonomy/dependencies.yaml
+assimp_catkin/
+catkin_boost_python_buildtool/
+catkin_simple/
+eigen_catkin/
+eigen_checks/
+gflags_catkin/
+glog_catkin/
+mav_comm/
+minimum_jerk_trajectories/
+minkindr/
+minkindr_ros/
+numpy_eigen/
+rotors_simulator/
+rpg_common/
+rpg_flightmare/
+rpg_mpc/
+rpg_mpl_ros/
+rpg_quadrotor_common/
+rpg_quadrotor_control/
+rpg_single_board_io/
