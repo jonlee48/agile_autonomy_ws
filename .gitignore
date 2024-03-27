@@ -1,4 +1,3 @@
-
 catkin_aa/build/
 catkin_aa/devel/
 catkin_aa/logs/
@@ -17,11 +16,9 @@ minimum_jerk_trajectories/
 minkindr/
 minkindr_ros/
 numpy_eigen/
-rotors_simulator/
 rpg_common/
 rpg_flightmare/
 rpg_mpc/
-rpg_mpl_ros/
 rpg_quadrotor_common/
 rpg_quadrotor_control/
 rpg_single_board_io/

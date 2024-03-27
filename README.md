@@ -55,60 +55,18 @@ First, you need a `cmake --verison` > 3.19. So run the 6 steps [here](https://ap
 
 Then follow these steps to build open3d from source [here](https://www.open3d.org/docs/release/compilation.html#ubuntu-macos). 
 
-I kept on getting the build error `#include<Open3D/Open3D.h>` no such file or directory . It turned out my Open3D package was installed in `/usr/local/include/` as `open3d/Open3D.h` not `Open3D/Open3D.h`.
-So I just changed the include to `#include<open3d/Open3D.h>` in `src/rpg_mpl_ros/open3d_conversions/include/open3d_conversions/open3d_conversions.h`.
-
-I also had to change line 9 and 10 in `src/rpg_mpl_ros/mpl_external_planner/include/mpl_external_planner/ellipsoid_planner/ellipsoid_util.h` to be lowercase.
-```
-#include <open3d/geometry/KDTreeFlann.h>
-#include <open3d/geometry/PointCloud.h>
-```
-
-And lines 5-7 in `src/agile_autonomy/data_generation/traj_sampler/include/traj_sampler/kdtree.h`
-```
-#include <open3d/geometry/KDTreeFlann.h>
-#include <open3d/geometry/PointCloud.h>
-#include <open3d/io/PointCloudIO.h>
-```
+I kept on getting the build error `#include<Open3D/Open3D.h>` no such file or directory . It turned out my Open3D package was installed in `/usr/local/include/` as `open3d/Open3D.h` not `Open3D/Open3D.h`. Similar build errors with open3d were fixed by correcting the path to the header files to match those in `/usr/local/include/`.
 
 ### Other prereqs
 
 ```
 sudo apt-get install libsdl-image1.2-dev
 sudo apt-get install libsdl-dev 
-```
-
-### rotors_gazebo_plugin
-
-Issue is std::options is used but is only available in c++17 not c++11 which is the standard that is specified in the CMakeLists.txt.
-
-```
-cd src/rotors_simulator/rotors_gazebo_plugins
-# change CMakeLists.txt line 94 to use c++17
-```
-
-### planning_ros_utils
-An error occurs while compiling the package planning_ros_utils. A workaround to get it compiling is to comment out line 39 in `src/rpg_mpl_ros/planning_ros_utils/src/planning_rviz_plugins/map_display.cpp`. See [this](https://github.com/uzh-rpg/rpg_mpl_ros/issues/1) issue.
-
-```
-//update_nh_.setCallbackQueue(point_cloud_common_->getCallbackQueue());
-```
-
-One line has to be commented out, according to this [issue](https://github.com/uzh-rpg/rpg_mpl_ros/issues/1)
-
-### packages in rpg_mpl_ros (mpl_test_node, mpl_test_node, open3d_conversions)
-Also the CMakeLists in `rpg_mpl_ros/mpl_external_planner needs to be c++17. Change line 3 from c++11 to c++17.
-
-And same for the two instances of `11` in `rpg_mpl_ros/mpl_test_node` line 7.
-
-Actually, `mpl_test_node` needs to be compiled with
-```
-catkin build mpl_test_node -DCMAKE_CXX_STANDARD=17
+sudo apt-get install ros-${ROS_DISTRO}-mavros
 ```
 
 So to compile all 71 packages do
 ```
-catkin build -DCMAKE_CXX_STANDARD=17
 ```
 
 
@@ -124,8 +82,7 @@ Now open a new terminal and type the following commands.
 ```bash
 # Build and re-source the workspace
 cd agile_autonomy_ws/catkin_aa
-catkin build
-#. ../devel/setup.bash
+catkin build --cmake-args -DCMAKE_CXX_STANDARD=17
 source devel/setup.bash
 
 # Create your learning environment

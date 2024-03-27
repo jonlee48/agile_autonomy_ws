@@ -1,3 +1,9 @@
 [submodule "catkin_aa/src/agile_autonomy"]
 	path = catkin_aa/src/agile_autonomy
 	url = git@github.com:jonlee48/agile_autonomy.git
+[submodule "catkin_aa/src/rpg_mpl_ros"]
+	path = catkin_aa/src/rpg_mpl_ros
+	url = git@github.com:jonlee48/rpg_mpl_ros.git
+[submodule "catkin_aa/src/rotors_simulator"]
+	path = catkin_aa/src/rotors_simulator
+	url = git@github.com:jonlee48/rotors_simulator.git
