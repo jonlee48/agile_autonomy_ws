@@ -30,8 +30,7 @@ sudo apt -y install gcc-7 g++-7
 Use the following commands to create a new catkin workspace and a virtual environment with all the required dependencies.
 
 ```bash
-vcs-import < agile_autonomy/dependencies.yaml
-# cd rpg_mpl_ros
+cd agile_autonomy_ws
 git submodule update --init --recursive
 
 #install extra dependencies (might need more depending on your OS)
@@ -44,11 +43,12 @@ sudo apt install -y libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev
 sudo apt install -y libvulkan1 vulkan-utils gdb
 
 # Add environment variables (Careful! Modify path according to your local setup)
-echo 'export RPGQ_PARAM_DIR=/home/<path/to/>catkin_aa/src/rpg_flightmare' >> ~/.bashrc
+echo 'export RPGQ_PARAM_DIR=/home/<path/to/>agile_autonomy_ws/catkin_aa/src/rpg_flightmare' >> ~/.bashrc
 ```
 
 ### Installing Open3D
 
+Tested with open3d 0.9.0.0
 The `open3d_conversions` package requires open3d. I had to install open3d from source, as there's no apt install for the cpp library. 
 
 First, you need a `cmake --verison` > 3.19. So run the 6 steps [here](https://apt.kitware.com/).
@@ -63,17 +63,6 @@ I kept on getting the build error `#include<Open3D/Open3D.h>` no such file or di
 sudo apt-get install libsdl-image1.2-dev
 sudo apt-get install libsdl-dev 
 sudo apt-get install ros-${ROS_DISTRO}-mavros
-```
-
-So to compile all 71 packages do
-```
-```
-
-
-Added two lines to `rpg_mpl_ros/open3d_conversions/CMakeLists.txt` after line 1.
-```
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ```
 
 ### Build workpsace
@@ -94,19 +83,20 @@ pip install rospkg==1.2.3 pyquaternion open3d opencv-python
 pip install defusedxml PySide2 # other missing dependencies
 ```
 
-Now download the flightmare standalone available at [this link](https://zenodo.org/record/5517791/files/standalone.tar?download=1), extract it and put in the [flightrender](https://github.com/antonilo/flightmare_agile_autonomy/tree/main/flightrender) folder.
+Now download the flightmare standalone available at [this link](https://zenodo.org/record/5517791/files/standalone.tar?download=1), extract it and put in the `catkin_aa/src/rpg_flightmare/flightrender` folder.
 
 
-## Issues
-
-There's an issue with the simulator dying ([issue](https://github.com/uzh-rpg/agile_autonomy/issues/86))
-```
-roslaunch agile_autonomy simulation.launch
-```
-
+## Issues and fixes
+- **Issue:** build issues with open3d and rviz
+    - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/10#issuecomment-981095386)
+- **Issue:** simulator process dying when running `roslaunch agile_autonomy simulation.launch`
+    - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/86)
+- **Issue:**
 It actually works fine without the conda environments activated
-`conda deactivate`.
-
-Also if getting an error "zmq.error.ZQMError Address already in use" do this. From this [stackoverflow](https://stackoverflow.com/questions/19159771/recovering-from-zmq-error-zmqerror-address-already-in-use)
-1. `sudo netstat -ltnp`
-2. `kill -9 <pid>`
+    - **Fix:** `conda deactivate`.
+- **Issue:** error `zmq.error.ZQMError Address already in use`
+    - **Fix:** [stackoverflow solution](https://stackoverflow.com/questions/19159771/recovering-from-zmq-error-zmqerror-address-already-in-use)
+        ```
+        sudo netstat -ltnp
+        kill -9 <pid>
+        ```

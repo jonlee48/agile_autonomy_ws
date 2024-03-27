@@ -56,5 +56,8 @@
 	path = catkin_aa/src/rpg_single_board_io
 	url = git@github.com:uzh-rpg/rpg_single_board_io.git
 [submodule "catkin_aa/src/flightmare_agile_autonomy"]
-	path = catkin_aa/src/flightmare_agile_autonomy
+	path = catkin_aa/src/rpg_flightmare
 	url = git@github.com:antonilo/flightmare_agile_autonomy.git
+[submodule "catkin_aa/src/minimum_jerk_trajectories"]
+	path = catkin_aa/src/minimum_jerk_trajectories
+	url = git@github.com:uzh-rpg/minimum_jerk_trajectories.git
