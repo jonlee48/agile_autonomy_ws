@@ -7,3 +7,54 @@
 [submodule "catkin_aa/src/rotors_simulator"]
 	path = catkin_aa/src/rotors_simulator
 	url = git@github.com:jonlee48/rotors_simulator.git
+[submodule "catkin_aa/src/assimp_catkin"]
+	path = catkin_aa/src/assimp_catkin
+	url = git@github.com:uzh-rpg/assimp_catkin.git
+[submodule "catkin_aa/src/catkin_boost_python_buildtool"]
+	path = catkin_aa/src/catkin_boost_python_buildtool
+	url = git@github.com:ethz-asl/catkin_boost_python_buildtool.git
+[submodule "catkin_aa/src/catkin_simple"]
+	path = catkin_aa/src/catkin_simple
+	url = git@github.com:catkin/catkin_simple.git
+[submodule "catkin_aa/src/eigen_catkin"]
+	path = catkin_aa/src/eigen_catkin
+	url = git@github.com:ethz-asl/eigen_catkin.git
+[submodule "catkin_aa/src/eigen_checks"]
+	path = catkin_aa/src/eigen_checks
+	url = git@github.com:ethz-asl/eigen_checks.git
+[submodule "catkin_aa/src/gflags_catkin"]
+	path = catkin_aa/src/gflags_catkin
+	url = git@github.com:ethz-asl/gflags_catkin.git
+[submodule "catkin_aa/src/glog_catkin"]
+	path = catkin_aa/src/glog_catkin
+	url = git@github.com:ethz-asl/glog_catkin.git
+[submodule "catkin_aa/src/mav_comm"]
+	path = catkin_aa/src/mav_comm
+	url = git@github.com:ethz-asl/mav_comm.git
+[submodule "catkin_aa/src/minkindr"]
+	path = catkin_aa/src/minkindr
+	url = git@github.com:ethz-asl/minkindr.git
+[submodule "catkin_aa/src/minkindr_ros"]
+	path = catkin_aa/src/minkindr_ros
+	url = git@github.com:ethz-asl/minkindr_ros.git
+[submodule "catkin_aa/src/numpy_eigen"]
+	path = catkin_aa/src/numpy_eigen
+	url = git@github.com:ethz-asl/numpy_eigen.git
+[submodule "catkin_aa/src/rpg_common"]
+	path = catkin_aa/src/rpg_common
+	url = git@github.com:kelia/rpg_common.git
+[submodule "catkin_aa/src/rpg_mpc"]
+	path = catkin_aa/src/rpg_mpc
+	url = git@github.com:uzh-rpg/rpg_mpc.git
+[submodule "catkin_aa/src/rpg_quadrotor_common"]
+	path = catkin_aa/src/rpg_quadrotor_common
+	url = git@github.com:uzh-rpg/rpg_quadrotor_common.git
+[submodule "catkin_aa/src/rpg_quadrotor_control"]
+	path = catkin_aa/src/rpg_quadrotor_control
+	url = git@github.com:uzh-rpg/rpg_quadrotor_control.git
+[submodule "catkin_aa/src/rpg_single_board_io"]
+	path = catkin_aa/src/rpg_single_board_io
+	url = git@github.com:uzh-rpg/rpg_single_board_io.git
+[submodule "catkin_aa/src/flightmare_agile_autonomy"]
+	path = catkin_aa/src/flightmare_agile_autonomy
+	url = git@github.com:antonilo/flightmare_agile_autonomy.git
