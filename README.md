@@ -46,26 +46,23 @@ sudo apt install -y libvulkan1 vulkan-utils gdb
 echo 'export RPGQ_PARAM_DIR=/home/<path/to/>agile_autonomy_ws/catkin_aa/src/rpg_flightmare' >> ~/.bashrc
 ```
 
-### Installing Open3D
+### Building Open3D from source
 
-Tested with open3d 0.9.0.0
-The `open3d_conversions` package requires open3d. I had to install open3d from source, as there's no apt install for the cpp library. 
+I was able 
+Follow the instructions [here](https://www.open3d.org/docs/release/compilation.html#ubuntu-macos) to build open3d from source, as there's no apt install for the cpp library.
+Open3d requires `cmake --verison` > 3.19. So run the steps [here](https://apt.kitware.com/) before building open3d.
 
-First, you need a `cmake --verison` > 3.19. So run the 6 steps [here](https://apt.kitware.com/).
+Note the authors test with open3d 0.9.0 ([this tag](https://github.com/isl-org/Open3D/releases/tag/v0.9.0)), but it seems to work fine with version 0.18.0.
 
-Then follow these steps to build open3d from source [here](https://www.open3d.org/docs/release/compilation.html#ubuntu-macos). 
-
-I kept on getting the build error `#include<Open3D/Open3D.h>` no such file or directory . It turned out my Open3D package was installed in `/usr/local/include/` as `open3d/Open3D.h` not `Open3D/Open3D.h`. Similar build errors with open3d were fixed by correcting the path to the header files to match those in `/usr/local/include/`.
-
-### Other prereqs
-
+Install other dependencies not listed in the original installation guide
 ```
 sudo apt-get install libsdl-image1.2-dev
 sudo apt-get install libsdl-dev 
-sudo apt-get install ros-${ROS_DISTRO}-mavros
+sudo apt-get install ros-noetic-mavros
+sudo apt-get install libsdl-dev libsdl-image1.2-dev ros-noetic-octomap ros-noetic-octomap-msgs ros-noetic-octomap-ros
 ```
 
-### Build workpsace
+### Build catkin workspace
 Now open a new terminal and type the following commands.
 
 ```bash
@@ -76,15 +73,20 @@ source devel/setup.bash
 
 # Create your learning environment
 roscd planner_learning
-conda create --name tf_24 python=3.7
+conda create --name tf_24 python=3.7.7
 conda activate tf_24
 pip install tensorflow-gpu==2.4
+conda install cudnn cudatoolkit
 pip install rospkg==1.2.3 pyquaternion open3d opencv-python
-pip install defusedxml PySide2 # other missing dependencies
+# Install other dependencies not listed in the original installation guide
+pip install defusedxml PySide2 
 ```
 
 Now download the flightmare standalone available at [this link](https://zenodo.org/record/5517791/files/standalone.tar?download=1), extract it and put in the `catkin_aa/src/rpg_flightmare/flightrender` folder.
 
+## Running the code
+
+See the README in `catkin_aa/src/agile_autonomy`
 
 ## Issues and fixes
 - **Issue:** build issues with open3d and rviz
@@ -100,3 +102,5 @@ It actually works fine without the conda environments activated
         sudo netstat -ltnp
         kill -9 <pid>
         ```
+- **Issue:** bad callback on running test script
+    - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/88)
