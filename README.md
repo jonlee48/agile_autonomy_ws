@@ -92,7 +92,7 @@ See the README in `catkin_aa/src/agile_autonomy`
 
 ## Issues and fixes
 - **Issue:** no kernel image is available for execution on the device 209
-    - **Fix:** Add `-gencode=arch=compute_89,code=sm_89` to CMakeLists. Replace 89 with the compute capability of your GPU (capability table)[https://developer.nvidia.com/cuda-gpus#compute]. This might require updating cudatoolkit to most recent cuda version supported by `nvidia-smi`. 
+    - **Fix:** Add `-gencode=arch=compute_89,code=sm_89` to CMakeLists then catkin clean and rebuild. Replace 89 with the compute capability of your GPU (capability table)[https://developer.nvidia.com/cuda-gpus#compute]. This might require updating cudatoolkit to most recent cuda version supported by `nvidia-smi`. 
         - [github issue 1](), [github issue 2]()
 - **Issue:** catkin build issues with open3d and rviz
     - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/10#issuecomment-981095386)
