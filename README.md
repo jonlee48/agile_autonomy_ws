@@ -62,6 +62,8 @@ sudo apt-get install libsdl-image1.2-dev
 sudo apt-get install libsdl-dev 
 sudo apt-get install ros-noetic-mavros
 sudo apt-get install libsdl-dev libsdl-image1.2-dev ros-noetic-octomap ros-noetic-octomap-msgs ros-noetic-octomap-ros
+sudo apt-get install ros-noetic-joy
+sudo apt install net-tools
 ```
 
 ### Build catkin workspace
