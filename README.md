@@ -6,6 +6,8 @@ Creating a shared catkin workspace, that way we're all on the same dependencies 
 
 Since this workspace already sets up the agile autonomy repo, we only have to run a subset of their installation instructions.
 
+This workspace has been tested with Ubuntu 20.04, Open3D 0.18.0, RTX 4090, GTX 980, cuda 11.2, and cuda 12.2.
+
 ### Requirements
 
 The code was tested with Ubuntu 20.04, ROS Noetic, Anaconda v4.8.3., and `gcc/g++` 7.5.0.
@@ -89,7 +91,10 @@ Now download the flightmare standalone available at [this link](https://zenodo.o
 See the README in `catkin_aa/src/agile_autonomy`
 
 ## Issues and fixes
-- **Issue:** build issues with open3d and rviz
+- **Issue:** no kernel image is available for execution on the device 209
+    - **Fix:** Add `-gencode=arch=compute_89,code=sm_89` to CMakeLists. Replace 89 with the compute capability of your GPU (capability table)[https://developer.nvidia.com/cuda-gpus#compute]. This might require updating cudatoolkit to most recent cuda version supported by `nvidia-smi`. 
+        - [github issue 1](), [github issue 2]()
+- **Issue:** catkin build issues with open3d and rviz
     - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/10#issuecomment-981095386)
 - **Issue:** simulator process dying when running `roslaunch agile_autonomy simulation.launch`
     - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/86)
