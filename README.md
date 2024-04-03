@@ -34,7 +34,7 @@ cd agile_autonomy_ws
 git submodule update --init --recursive
 
 #install extra dependencies (might need more depending on your OS)
-sudo apt-get install libqglviewer-dev-qt5
+sudo apt-get install libqglviewer-dev-qt5 libfmt-dev
 
 # Install external libraries for rpg_flightmare
 sudo apt install -y libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev
@@ -68,7 +68,7 @@ Now open a new terminal and type the following commands.
 ```bash
 # Build and re-source the workspace
 cd agile_autonomy_ws/catkin_aa
-catkin build --cmake-args -DCMAKE_CXX_STANDARD=17
+catkin build --cmake-args -DCMAKE_CXX_STANDARD=17 -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 
 # Create your learning environment
