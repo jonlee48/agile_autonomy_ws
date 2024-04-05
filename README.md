@@ -93,6 +93,8 @@ Now download the flightmare standalone available at [this link](https://zenodo.o
 See the README in `catkin_aa/src/agile_autonomy`
 
 ## Issues and fixes
+- **Issue:** hummingbird/rqt_quad_gui process dies (ValueError: bad marshal data) when running `roslaunch agile_autonomy simulation.launch`.
+    - **Fix:** Don't run the launchfile from a conda envrionment `conda deactivate`.
 - **Issue:** no kernel image is available for execution on the device 209
     - **Fix:** Add `-gencode=arch=compute_89,code=sm_89` to CMakeLists then catkin clean and rebuild. Replace 89 with the compute capability of your GPU (capability table)[https://developer.nvidia.com/cuda-gpus#compute]. This might require updating cudatoolkit to most recent cuda version supported by `nvidia-smi`. 
         - [github issue 1](), [github issue 2]()
