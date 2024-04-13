@@ -105,9 +105,8 @@ See the README in `catkin_aa/src/agile_autonomy`
     - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/10#issuecomment-981095386)
 - **Issue:** simulator process dying when running `roslaunch agile_autonomy simulation.launch`
     - **Fix:** [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/86)
-- **Issue:**
-It actually works fine without the conda environments activated
-    - **Fix:** `conda deactivate`.
+- **Issue:** Crawling for plugins of type 'qt_gui'. Value error: bad marshal data (unknown type code). 
+    - **Fix:** Ron't run roslaunch with conda environments activated. `conda deactivate`.
 - **Issue:** error `zmq.error.ZQMError Address already in use`
     - **Fix:** [stackoverflow solution](https://stackoverflow.com/questions/19159771/recovering-from-zmq-error-zmqerror-address-already-in-use)
         ```
