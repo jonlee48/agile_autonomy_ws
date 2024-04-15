@@ -94,6 +94,8 @@ Now download the flightmare standalone available at [this link](https://zenodo.o
 See the README in `catkin_aa/src/agile_autonomy`
 
 ## Issues and fixes
+- **Issue:** Unable to find either executable 'empy' or Python module 'em'
+    - **Fix:** Caused by running catkin build inside a conda environment. Deactivate the environment and catkin clean [github issue](https://github.com/ros/catkin/issues/1132#issuecomment-1677083378).
 - **Issue:** Segmentation fault when running `python train.py --settings_file=config/train_settings.yaml`. Same error as [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/83)
     - Use conda 11.1 in the virtual envrionment [github issue](https://github.com/uzh-rpg/agile_autonomy/issues/42#issuecomment-1071957916)
 - **Issue:** hummingbird/rqt_quad_gui process dies (ValueError: bad marshal data) when running `roslaunch agile_autonomy simulation.launch`.
